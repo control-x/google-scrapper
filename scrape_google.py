@@ -12,7 +12,9 @@ from pprint import pprint
     "--city_file", required=True, help="Path to the CSV file containing city names."
 )
 @click.option(
-    "--search_queries_file", required=True, help="Path to the CSV file containing search_queries."
+    "--search_queries_file",
+    required=True,
+    help="Path to the CSV file containing search_queries.",
 )
 @click.option(
     "--output_file", default="output.csv", help="Path to the output CSV file."
@@ -20,7 +22,9 @@ from pprint import pprint
 @click.option("--api_key", required=True, help="Your ScrapingBee API key.")
 @click.option("--nb_results", default=20, help="Number of results to scrape.")
 @click.option("--language", default="fr", help="Language of the search results.")
-def scrape_google(city_file, search_queries_file, output_file, api_key, nb_results, language):
+def scrape_google(
+    city_file, search_queries_file, output_file, api_key, nb_results, language
+):
     api_url = f"https://app.scrapingbee.com/api/v1/store/google?api_key={api_key}&search={{}}&nb_results={nb_results}&language={language}"
     cities = read_csv(city_file)
     search_queries = read_csv(search_queries_file)
@@ -31,7 +35,7 @@ def scrape_google(city_file, search_queries_file, output_file, api_key, nb_resul
             ["City", "Title", "URL", "Position", "Description", "Search Query"]
         )
 
-        for search_query in  search_queries:
+        for search_query in search_queries:
             for city in cities:
                 search_query = search_query.replace("%city", city)
                 print(f"Scraping '{search_query}'...")
