@@ -67,6 +67,21 @@ This script allows you to scrape Google search results using the ScrapingBee API
 
 3. The script will generate an output CSV file (e.g., `output.csv`) containing the organic search results for each city and search query combination.
 
+### Script Options
+
+- `--city_file`: Required. The path to the CSV file containing city names.
+- `--search_queries_file`: Required. The path to the CSV file containing search queries.
+- `--output_file`: Optional. The path to the output CSV file. Default is `output.csv`.
+- `--api_key`: Required. Your ScrapingBee API key.
+- `--nb_results`: Optional. The number of results to scrape. Default is 20.
+- `--language`: Optional. The language of the search results. Default is `fr`.
+
+Example with all options:
+```
+python3 scrape_google.py --city_file cities.csv --search_queries_file search_queries.csv --output_file output.csv --api_key YOUR_API_KEY --nb_results 30 --language en
+```
+
+
 ## Troubleshooting
 
 If you encounter any issues or need further assistance, please check the official Python and ScrapingBee documentation, or open an issue on this repository.
